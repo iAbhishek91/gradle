@@ -1,0 +1,15 @@
+group 'com.doctord'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    task('hello').doLast {
+        println "I'm in $project.name"
+    }
+
+    println("$project.name configuration phase")
+}
+evaluationDependsOnChildren()
+Project subProject1 = project('sub-project-1')
+Project subProject2 = project('sub-project-2')
+
+subProject1.tasks['task-1'].mustRunAfter(subProject2.tasks['task-2'])

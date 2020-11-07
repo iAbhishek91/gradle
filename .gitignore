@@ -1,0 +1,14 @@
+*.class
+
+*.ctxt
+
+*.jar
+*.war
+*.ear
+
+.gradle
+/build/
+
+.gradletasknamecache
+gradle-app.settings
+!gradle-wrapper.jar

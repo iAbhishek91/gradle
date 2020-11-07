@@ -1,0 +1,5 @@
+rootProject.name = 'multi-module'
+
+include 'sub-project-1', 'sub-project-2'
+
+println("initialization phase")

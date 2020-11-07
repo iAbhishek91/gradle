@@ -1,0 +1,9 @@
+task('goodbye').doLast {
+    println "bye from $project.name"
+}
+
+task('task-1').doLast {
+    println("task - 1: ${project.name}")
+}
+
+println("$project.name configuration phase")
