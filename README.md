@@ -1,77 +1,18 @@
-# Gradle
+# How to use this project
 
-## Lifecycle of Gradle
+This project contains multiple project illustrating different scenario of gradle.
 
-- **Initialization phase**: determine which all project will take part in the build. This is done by the `include` statements in `settings.gradle`
-- **Configuration phase**: executes the code in the build files. It creates everything required to run task. First gradle configure the root project and then the child projects.
-- **Execution**: Execute the tasks.
+To run each project `cd` to the project and execute the jobs.
 
-To see this lifecycle we have to put some `println` statements:
+Each project have README.md illustrating the scenario. 
 
-- **For initialization phase**: in `settings.gradle`
-- **For configuration phase**: in `build.gradle` in sub project as well as in parent `build.gradle`, under `allprojects` section.
-- **For execution phase**: nothing as we have already created some dummy task called `hello`.
+## Projects
 
-run `./gradlew hello`
+- keep default name for the sub-projects. The name can be changed on: `settings.gradle`, but not suggested (maintain simplicity.
+- kebab case naming convention for the project.
+- define `rootProject.name` in settings.gradle.
 
-## No need to create separate build.gradle
+### multi-module-task-dependencies
 
-tell gradle that this is multi module project by including the below line.
-
-`include 'sub-project-1', 'sub-project-2'`
-
-then type `./gradlew projects`
-
-> sub-project-* folders aren't required
-
-## To pass configuration to all the project
-
-> USE THIS: common functionality for all projects
-in build.gradle
-
-```groovy
-allprojects {
-    task('hello').doLast {
-        println "I'm in $project.name"
-    }
-}
-```
-
-execute the task by name: `./gradlew hello`
-
-> sub-project-* folders aren't required
-
-## another way, create sub-project folders
-
-> USE THIS: when we need to create customise behaviour
-- create a folder with the same name as in settings.gradle
-- create a file build.gradle
-- create a task
-
-```groovy
-task('goodbye').doLast {
-    println "goodbye from $project.name"
-}
-```
-
-## specify the order of the task execution
-
-By default, the tasks are executed `breadth-first` order. But we can change the order.
-
-for that we have create `task-1` and `task-2` in the sub project.
-
-mention the order in parent `build.gradle`
-
-```groovy
-evaluationDependsOnChildren()
-Project subProject1 = project('sub-project-1')
-Project subProject2 = project('sub-project-2')
-
-subProject1.tasks['task-1'].mustRunAfter(subProject2.tasks['task-2'])
-```
-
-## Common commands
-
-```shell script
-./gradlew tasks --all
-```
+- simple multi module project
+- show how to override the task execution order.

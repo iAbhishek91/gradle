@@ -6,4 +6,4 @@ task('task-1').doLast {
     println("task - 1: ${project.name}")
 }
 
-println("$project.name configuration phase")
+println("$project.name configuration phase from sub-project-1/build.gradle")

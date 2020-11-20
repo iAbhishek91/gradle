@@ -1,4 +1,0 @@
-
-task('task-2').doLast {
-    println("task - 2: ${project.name}")
-}

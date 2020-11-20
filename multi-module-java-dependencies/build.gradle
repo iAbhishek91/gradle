@@ -6,8 +6,11 @@ allprojects {
         println "I'm in $project.name"
     }
 
-    println("$project.name configuration phase")
+    println("$project.name configuration phase from ./build.gradle")
 }
+
+// the below code changes the default order of execution | parent then childs and sub-childs
+// in the below will execute sub-project-1 then sub-project-2 and creates dependencies as well.
 evaluationDependsOnChildren()
 Project subProject1 = project('sub-project-1')
 Project subProject2 = project('sub-project-2')

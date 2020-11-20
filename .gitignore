@@ -6,9 +6,11 @@
 *.war
 *.ear
 
-.gradle
+*/.gradle/
 /build/
 
 .gradletasknamecache
 gradle-app.settings
 !gradle-wrapper.jar
+
+.idea
